@@ -1,12 +1,23 @@
-import "../styles/App.scss";
+import '../styles/App.scss';
+import logoAdalab from '../images/logo-adalab.png';
+import logoFontAwesome from '../images/tarjetas-molonas.png';
+import { useState } from 'react';
 
 function App() {
+  const [name, setName] = useState('Nombre y apellidos');
+  const handleName = (ev) => {
+    setName(ev.currentTarget.value);
+  };
+  const [collapsed, setCollapsed] = useState('collapsed');
+  const handleCollapsed = () => {
+    collapsed !== 'collapsed' ? setCollapsed('collapsed') : setCollapsed('');
+  };
   return (
     <div>
       <header className="header">
         <img
           className="header__image-brand"
-          src="./assets/images/tarjetas-molonas.png"
+          src={logoFontAwesome}
           alt="imagen awesome profile cards"
         />
       </header>
@@ -22,7 +33,7 @@ function App() {
               <div className="main1__container__text">
                 <div className="border">
                   <p className="main1__container__text--name js-preview-name">
-                    Nombre Apellido
+                    {name}
                   </p>
                   <p className="main1__container__text--profession js-preview-job">
                     Front-end developer
@@ -51,7 +62,7 @@ function App() {
         </section>
 
         <form action="/signup" method="post" className="main2">
-          <fieldset className="design">
+          <fieldset className="design" onClick={handleCollapsed}>
             <legend className="design__legend js-designLegend">
               <div className="design__legend--topLegend">
                 <i className="fa-solid fa-object-ungroup design__legend--icon"></i>
@@ -59,7 +70,7 @@ function App() {
               </div>
               <i className="fa-solid fa-angle-up design__legend--arrow js-designArrow fa-transform"></i>
             </legend>
-            <div className="js-design collapsed">
+            <div className={`js-design ${collapsed}`}>
               <div className="box1">
                 <h3 className="design__inputname">Colores</h3>
                 <div className="design__options">
@@ -71,7 +82,7 @@ function App() {
                       value="option1"
                       name="design-options"
                     />
-                    <label className="design__options--box" for="option1">
+                    <label className="design__options--box" htmlFor="option1">
                       <div className="option1__color1"></div>
                       <div className="option1__color2"></div>
                       <div className="option1__color3"></div>
@@ -85,7 +96,7 @@ function App() {
                       value="option2"
                       name="design-options"
                     />
-                    <label className="design__options--box" for="option2">
+                    <label className="design__options--box" htmlFor="option2">
                       <div className="option2__color1"></div>
                       <div className="option2__color2"></div>
                       <div className="option2__color3"></div>
@@ -99,7 +110,7 @@ function App() {
                       value="option3"
                       name="design-options"
                     />
-                    <label className="design__options--box" for="option3">
+                    <label className="design__options--box" htmlFor="option3">
                       <div className="option3__color1"></div>
                       <div className="option3__color2"></div>
                       <div className="option3__color3"></div>
@@ -121,7 +132,8 @@ function App() {
           <fieldset
             action="/signup"
             method="post"
-            className="form2 js-fieldset collapsed"
+            className="form2 js-fieldset"
+            onClick={handleCollapsed}
           >
             <label className="label1">Nombre completo</label>
             <input
@@ -129,6 +141,7 @@ function App() {
               className="input js_resetInput"
               name="name"
               placeholder="Ej: Sally Hill"
+              onChange={handleName}
               required
             />
             <label className="label">Puesto</label>
@@ -145,7 +158,7 @@ function App() {
             <div className="container">
               <label
                 className="form2-submit js__profile-trigger"
-                for="user-photo"
+                htmlFor="user-photo"
               >
                 Añadir imagen
               </label>
@@ -192,7 +205,12 @@ function App() {
             />
           </fieldset>
           <div className="line"></div>
-          <fieldset action="/signup" method="post" className="share-container">
+          <fieldset
+            action="/signup"
+            method="post"
+            className="share-container"
+            onClick={handleCollapsed}
+          >
             <label className="form--heading js-title_share">
               <div className="form--heading__left">
                 <i className="fa-solid fa-share-nodes"></i>
@@ -200,7 +218,7 @@ function App() {
               </div>
               <i className="fa-solid fa-angle-up fill-arrow js-shareArrow fa-transform"></i>
             </label>
-            <div className="form3 js-share collapsed">
+            <div className="form3 js-share">
               <div className="form3--section-1">
                 <p className="text-share share-error js-text-share"></p>
                 <button className="form3--section-1__button js_bntCreate">
@@ -239,7 +257,7 @@ function App() {
         <h4 className="footer__title">Awesome profile-cards @2018</h4>
         <nav className="footer__logo">
           <a href="https://adalab.es/" title="adalab.es">
-            <img src="./assets/images/logo-adalab.png" alt="logo Adalab" />
+            <img src={logoAdalab} alt="logo Adalab" />
           </a>
         </nav>
       </footer>
