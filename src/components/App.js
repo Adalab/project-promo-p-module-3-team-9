@@ -4,14 +4,53 @@ import logoFontAwesome from '../images/tarjetas-molonas.png';
 import { useState } from 'react';
 
 function App() {
-  const [name, setName] = useState('Nombre y apellidos');
-  const handleName = (ev) => {
-    setName(ev.currentTarget.value);
-  };
-  const [collapsed, setCollapsed] = useState('collapsed');
-  const handleCollapsed = () => {
-    collapsed !== 'collapsed' ? setCollapsed('collapsed') : setCollapsed('');
-  };
+  const [dataCard, setDataCard] = useState(
+    {
+      palette: "1",
+      name: "",
+      job: "",
+      email: "",
+      phone: "",
+      photo: "",
+      linkedin: "",
+      github: "",
+    }
+  )
+  const handleInput = (event) => {
+    const inputValue = event.target.value;
+    const inputChanged = event.target.name;
+    setDataCard({...dataCard, [inputChanged]: inputValue});
+  //   if (inputChanged === "name") {
+  //     setDataCard({ ...dataCard, name: inputValue })
+  //   }
+  //  else if (inputChanged === "job") {
+  //     setDataCard({ ...dataCard, job: inputValue })
+  //   }
+  //   else if (inputChanged === "email") {
+  //     setDataCard({ ...dataCard, email: inputValue })
+  //   }
+  //   else if (inputChanged === "phone") {
+  //     setDataCard({ ...dataCard, phone: inputValue })
+  //   }
+  //   else if (inputChanged === "linkedin") {
+  //     setDataCard({ ...dataCard, linkedin: inputValue })
+  //   }
+  //   else if (inputChanged === "github") {
+  //     setDataCard({ ...dataCard, github: inputValue })
+  //   }
+  }
+
+
+
+
+  // const [name, setName] = useState('Nombre y apellidos');
+  // const handleName = (ev) => {
+  //   setName(ev.currentTarget.value);
+  // };
+  // const [collapsed, setCollapsed] = useState('collapsed');
+  // const handleCollapsed = () => {
+  //   collapsed !== 'collapsed' ? setCollapsed('collapsed') : setCollapsed('');
+  // };
   return (
     <div>
       <header className="header">
@@ -33,10 +72,11 @@ function App() {
               <div className="main1__container__text">
                 <div className="border">
                   <p className="main1__container__text--name js-preview-name">
-                    {name}
+                    {dataCard.name || "Nombre Completo"}
                   </p>
                   <p className="main1__container__text--profession js-preview-job">
-                    Front-end developer
+                    {dataCard.job || "Front-end developer"}
+
                   </p>
                 </div>
               </div>
@@ -44,16 +84,16 @@ function App() {
               <div className="main1__container__cat js__profile-image js_reset_image"></div>
 
               <nav className="main1__container__rrss">
-                <a className="js-preview-phone" href="">
+                <a className="js-preview-phone" href={`tel: ${dataCard.phone}`}>
                   <i className="main1__container__rrss__link fa-solid fa-mobile-screen-button"></i>
                 </a>
-                <a className="js-preview-email" href="">
+                <a className="js-preview-email" href={`mailto: ${dataCard.email}`}>
                   <i className="main1__container__rrss__link fa-solid fa-envelope"></i>
                 </a>
-                <a className="js-preview-linkedin" href="">
+                <a className="js-preview-linkedin" href={dataCard.linkedin}>
                   <i className="main1__container__rrss__link fa-brands fa-linkedin-in"></i>
                 </a>
-                <a className="js-preview-github" href="">
+                <a className="js-preview-github" href={dataCard.github}>
                   <i className="main1__container__rrss__link fa-brands fa-github-alt"></i>
                 </a>
               </nav>
@@ -62,7 +102,9 @@ function App() {
         </section>
 
         <form action="/signup" method="post" className="main2">
-          <fieldset className="design" onClick={handleCollapsed}>
+          <fieldset className="design" 
+          // onClick={handleCollapsed}
+          >
             <legend className="design__legend js-designLegend">
               <div className="design__legend--topLegend">
                 <i className="fa-solid fa-object-ungroup design__legend--icon"></i>
@@ -70,7 +112,8 @@ function App() {
               </div>
               <i className="fa-solid fa-angle-up design__legend--arrow js-designArrow fa-transform"></i>
             </legend>
-            <div className={`js-design ${collapsed}`}>
+            <div className= "js-design"
+            >
               <div className="box1">
                 <h3 className="design__inputname">Colores</h3>
                 <div className="design__options">
@@ -133,7 +176,7 @@ function App() {
             action="/signup"
             method="post"
             className="form2 js-fieldset"
-            onClick={handleCollapsed}
+            // onClick={handleCollapsed}
           >
             <label className="label1">Nombre completo</label>
             <input
@@ -141,7 +184,8 @@ function App() {
               className="input js_resetInput"
               name="name"
               placeholder="Ej: Sally Hill"
-              onChange={handleName}
+              onChange={handleInput}
+              value={dataCard.name}
               required
             />
             <label className="label">Puesto</label>
@@ -150,6 +194,8 @@ function App() {
               className="input js_resetInput"
               name="job"
               placeholder="Ej: Front-end unicorn"
+              onChange={handleInput}
+              value={dataCard.job}
               required
             />
 
@@ -176,6 +222,8 @@ function App() {
               className="input js_resetInput"
               name="email"
               placeholder="Ej: sally.hill@gmail.com"
+              onChange={handleInput}
+              value={dataCard.email}
               required
             />
 
@@ -185,6 +233,8 @@ function App() {
               className="input js_resetInput"
               name="phone"
               placeholder="Ej: 555-55-55-55"
+              onChange={handleInput}
+              value={dataCard.phone}
               required
             />
             <label className="label">Linkedin</label>
@@ -193,6 +243,8 @@ function App() {
               className="input js_resetInput"
               name="linkedin"
               placeholder="Ej: /sally-hill-9b3888143/"
+              onChange={handleInput}
+              value={dataCard.linkedin}
               required
             />
             <label className="label">Github</label>
@@ -201,6 +253,8 @@ function App() {
               className="input js_resetInput"
               name="github"
               placeholder="Ej: sally-hill"
+              onChange={handleInput}
+              value={dataCard.github}
               required
             />
           </fieldset>
@@ -209,7 +263,7 @@ function App() {
             action="/signup"
             method="post"
             className="share-container"
-            onClick={handleCollapsed}
+            // onClick={handleCollapsed}
           >
             <label className="form--heading js-title_share">
               <div className="form--heading__left">
