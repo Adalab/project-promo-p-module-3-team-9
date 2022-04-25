@@ -4,6 +4,7 @@ import logoFontAwesome from '../images/tarjetas-molonas.png';
 import { useState } from 'react';
 
 function App() {
+  //constantes de estado
   const [dataCard, setDataCard] = useState({
     palette: '1',
     name: '',
@@ -14,38 +15,27 @@ function App() {
     linkedin: '',
     github: '',
   });
+
+  //funciones manejadoras
   const handleInput = (event) => {
     const inputValue = event.target.value;
     const inputChanged = event.target.name;
     setDataCard({ ...dataCard, [inputChanged]: inputValue });
-    //   if (inputChanged === "name") {
-    //     setDataCard({ ...dataCard, name: inputValue })
-    //   }
-    //  else if (inputChanged === "job") {
-    //     setDataCard({ ...dataCard, job: inputValue })
-    //   }
-    //   else if (inputChanged === "email") {
-    //     setDataCard({ ...dataCard, email: inputValue })
-    //   }
-    //   else if (inputChanged === "phone") {
-    //     setDataCard({ ...dataCard, phone: inputValue })
-    //   }
-    //   else if (inputChanged === "linkedin") {
-    //     setDataCard({ ...dataCard, linkedin: inputValue })
-    //   }
-    //   else if (inputChanged === "github") {
-    //     setDataCard({ ...dataCard, github: inputValue })
-    //   }
   };
 
-  // const [name, setName] = useState('Nombre y apellidos');
-  // const handleName = (ev) => {
-  //   setName(ev.currentTarget.value);
-  // };
-  // const [collapsed, setCollapsed] = useState('collapsed');
-  // const handleCollapsed = () => {
-  //   collapsed !== 'collapsed' ? setCollapsed('collapsed') : setCollapsed('');
-  // };
+  const handleReset = (event) => {
+    event.preventDefault();
+    setDataCard({
+      palette: '1',
+      name: '',
+      job: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
+    });
+  };
+
   return (
     <div>
       <header className="header">
@@ -57,10 +47,15 @@ function App() {
       </header>
 
       <main className="main">
-        <section className="main1 js-preview-container">
+        <section
+          className={`main1 js-preview-container palette-${dataCard.palette}`}
+        >
           <div className="main1__container">
             <div>
-              <button className="main1__container__reset js_buttonReset">
+              <button
+                className="main1__container__reset js_buttonReset"
+                onClick={handleReset}
+              >
                 <i className="fa-solid fa-trash-can"></i>reset
               </button>
 
@@ -119,8 +114,9 @@ function App() {
                       className="option__input js-input-1 js-option-input"
                       id="1"
                       type="radio"
-                      value="option1"
-                      name="design-options"
+                      value="1"
+                      name="palette"
+                      onChange={handleInput}
                     />
                     <label className="design__options--box" htmlFor="option1">
                       <div className="option1__color1"></div>
@@ -133,8 +129,9 @@ function App() {
                       className="option__input js-input-2 js-option-input"
                       id="2"
                       type="radio"
-                      value="option2"
-                      name="design-options"
+                      value="2"
+                      name="palette"
+                      onChange={handleInput}
                     />
                     <label className="design__options--box" htmlFor="option2">
                       <div className="option2__color1"></div>
@@ -147,8 +144,9 @@ function App() {
                       className="option__input js-input-3 js-option-input"
                       id="3"
                       type="radio"
-                      value="option3"
-                      name="design-options"
+                      value="3"
+                      name="palette"
+                      onChange={handleInput}
                     />
                     <label className="design__options--box" htmlFor="option3">
                       <div className="option3__color1"></div>
