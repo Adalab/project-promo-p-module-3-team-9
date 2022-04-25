@@ -4,44 +4,39 @@ import logoFontAwesome from '../images/tarjetas-molonas.png';
 import { useState } from 'react';
 
 function App() {
-  const [dataCard, setDataCard] = useState(
-    {
-      palette: "1",
-      name: "",
-      job: "",
-      email: "",
-      phone: "",
-      photo: "",
-      linkedin: "",
-      github: "",
-    }
-  )
+  const [dataCard, setDataCard] = useState({
+    palette: '1',
+    name: '',
+    job: '',
+    email: '',
+    phone: '',
+    photo: '',
+    linkedin: '',
+    github: '',
+  });
   const handleInput = (event) => {
     const inputValue = event.target.value;
     const inputChanged = event.target.name;
-    setDataCard({...dataCard, [inputChanged]: inputValue});
-  //   if (inputChanged === "name") {
-  //     setDataCard({ ...dataCard, name: inputValue })
-  //   }
-  //  else if (inputChanged === "job") {
-  //     setDataCard({ ...dataCard, job: inputValue })
-  //   }
-  //   else if (inputChanged === "email") {
-  //     setDataCard({ ...dataCard, email: inputValue })
-  //   }
-  //   else if (inputChanged === "phone") {
-  //     setDataCard({ ...dataCard, phone: inputValue })
-  //   }
-  //   else if (inputChanged === "linkedin") {
-  //     setDataCard({ ...dataCard, linkedin: inputValue })
-  //   }
-  //   else if (inputChanged === "github") {
-  //     setDataCard({ ...dataCard, github: inputValue })
-  //   }
-  }
-
-
-
+    setDataCard({ ...dataCard, [inputChanged]: inputValue });
+    //   if (inputChanged === "name") {
+    //     setDataCard({ ...dataCard, name: inputValue })
+    //   }
+    //  else if (inputChanged === "job") {
+    //     setDataCard({ ...dataCard, job: inputValue })
+    //   }
+    //   else if (inputChanged === "email") {
+    //     setDataCard({ ...dataCard, email: inputValue })
+    //   }
+    //   else if (inputChanged === "phone") {
+    //     setDataCard({ ...dataCard, phone: inputValue })
+    //   }
+    //   else if (inputChanged === "linkedin") {
+    //     setDataCard({ ...dataCard, linkedin: inputValue })
+    //   }
+    //   else if (inputChanged === "github") {
+    //     setDataCard({ ...dataCard, github: inputValue })
+    //   }
+  };
 
   // const [name, setName] = useState('Nombre y apellidos');
   // const handleName = (ev) => {
@@ -72,11 +67,10 @@ function App() {
               <div className="main1__container__text">
                 <div className="border">
                   <p className="main1__container__text--name js-preview-name">
-                    {dataCard.name || "Nombre Completo"}
+                    {dataCard.name || 'Nombre Completo'}
                   </p>
                   <p className="main1__container__text--profession js-preview-job">
-                    {dataCard.job || "Front-end developer"}
-
+                    {dataCard.job || 'Front-end developer'}
                   </p>
                 </div>
               </div>
@@ -87,7 +81,10 @@ function App() {
                 <a className="js-preview-phone" href={`tel: ${dataCard.phone}`}>
                   <i className="main1__container__rrss__link fa-solid fa-mobile-screen-button"></i>
                 </a>
-                <a className="js-preview-email" href={`mailto: ${dataCard.email}`}>
+                <a
+                  className="js-preview-email"
+                  href={`mailto: ${dataCard.email}`}
+                >
                   <i className="main1__container__rrss__link fa-solid fa-envelope"></i>
                 </a>
                 <a className="js-preview-linkedin" href={dataCard.linkedin}>
@@ -102,8 +99,9 @@ function App() {
         </section>
 
         <form action="/signup" method="post" className="main2">
-          <fieldset className="design" 
-          // onClick={handleCollapsed}
+          <fieldset
+            className="design"
+            // onClick={handleCollapsed}
           >
             <legend className="design__legend js-designLegend">
               <div className="design__legend--topLegend">
@@ -112,8 +110,7 @@ function App() {
               </div>
               <i className="fa-solid fa-angle-up design__legend--arrow js-designArrow fa-transform"></i>
             </legend>
-            <div className= "js-design"
-            >
+            <div className="js-design">
               <div className="box1">
                 <h3 className="design__inputname">Colores</h3>
                 <div className="design__options">
