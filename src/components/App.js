@@ -5,6 +5,9 @@ import { useState } from 'react';
 
 function App() {
   //constantes de estado
+  const [designClassCollapsed, setDesignClassCollapsed] = useState('collapsed');
+  const [fillClassCollapsed, setFillClassCollapsed] = useState('collapsed');
+  const [shareClassCollapsed, setShareClassCollapsed] = useState('collapsed');
   const [dataCard, setDataCard] = useState({
     palette: '1',
     name: '',
@@ -21,6 +24,24 @@ function App() {
     const inputValue = event.target.value;
     const inputChanged = event.target.name;
     setDataCard({ ...dataCard, [inputChanged]: inputValue });
+  };
+
+  const handleCollapsed = (ev) => {
+    const targetId = ev.currentTarget.id;
+    console.log(targetId);
+    if (targetId === 'design') {
+      designClassCollapsed === 'collapsed'
+        ? setDesignClassCollapsed('')
+        : setDesignClassCollapsed('collapsed');
+    } else if (targetId === 'fill') {
+      fillClassCollapsed === 'collapsed'
+        ? setFillClassCollapsed('')
+        : setFillClassCollapsed('collapsed');
+    } else if (targetId === 'share') {
+      shareClassCollapsed === 'collapsed'
+        ? setShareClassCollapsed('')
+        : setShareClassCollapsed('collapsed');
+    }
   };
 
   const handleReset = (event) => {
@@ -94,11 +115,12 @@ function App() {
         </section>
 
         <form action="/signup" method="post" className="main2">
-          <fieldset
-            className="design"
-            // onClick={handleCollapsed}
-          >
-            <legend className="design__legend js-designLegend">
+          <fieldset className="design">
+            <legend
+              id="design"
+              className="design__legend js-designLegend"
+              onClick={handleCollapsed}
+            >
               <div className="design__legend--topLegend">
                 <i className="fa-solid fa-object-ungroup design__legend--icon"></i>
                 <h2 className="design__title">Diseña</h2>
@@ -106,7 +128,7 @@ function App() {
               <i className="fa-solid fa-angle-up design__legend--arrow js-designArrow fa-transform"></i>
             </legend>
             <div className="js-design">
-              <div className="box1">
+              <div className={`box1 ${designClassCollapsed}`}>
                 <h3 className="design__inputname">Colores</h3>
                 <div className="design__options">
                   <div className="option">
@@ -161,7 +183,11 @@ function App() {
 
           <div className="line"></div>
 
-          <div className="filled js-desplegable">
+          <div
+            id="fill"
+            className="filled js-desplegable"
+            onClick={handleCollapsed}
+          >
             <i className="fa-solid fa-keyboard"></i>
             <legend className="filled__text">Rellena</legend>
             <i className="fa-solid fa-angle-up fill-arrow js-icon-rellena fa-transform "></i>
@@ -170,8 +196,7 @@ function App() {
           <fieldset
             action="/signup"
             method="post"
-            className="form2 js-fieldset"
-            // onClick={handleCollapsed}
+            className={`form2 js-fieldset ${fillClassCollapsed}`}
           >
             <label className="label1">Nombre completo</label>
             <input
@@ -254,13 +279,12 @@ function App() {
             />
           </fieldset>
           <div className="line"></div>
-          <fieldset
-            action="/signup"
-            method="post"
-            className="share-container"
-            // onClick={handleCollapsed}
-          >
-            <label className="form--heading js-title_share">
+          <fieldset action="/signup" method="post" className="share-container">
+            <label
+              id="share"
+              className="form--heading js-title_share"
+              onClick={handleCollapsed}
+            >
               <div className="form--heading__left">
                 <i className="fa-solid fa-share-nodes"></i>
                 <h2 className="share--text">COMPARTE</h2>
@@ -268,7 +292,7 @@ function App() {
               <i className="fa-solid fa-angle-up fill-arrow js-shareArrow fa-transform"></i>
             </label>
             <div className="form3 js-share">
-              <div className="form3--section-1">
+              <div className={`form3--section-1 ${shareClassCollapsed}`}>
                 <p className="text-share share-error js-text-share"></p>
                 <button className="form3--section-1__button js_bntCreate">
                   <i className="fa-regular fa-address-card"></i>
