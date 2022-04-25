@@ -138,6 +138,7 @@ function App() {
                       value="1"
                       name="palette"
                       onChange={handleInput}
+                      checked={dataCard.palette === '1'}
                     />
                     <label className="design__options--box" htmlFor="option1">
                       <div className="option1__color1"></div>
@@ -153,6 +154,7 @@ function App() {
                       value="2"
                       name="palette"
                       onChange={handleInput}
+                      checked={dataCard.palette === '2'}
                     />
                     <label className="design__options--box" htmlFor="option2">
                       <div className="option2__color1"></div>
@@ -168,6 +170,7 @@ function App() {
                       value="3"
                       name="palette"
                       onChange={handleInput}
+                      checked={dataCard.palette === '3'}
                     />
                     <label className="design__options--box" htmlFor="option3">
                       <div className="option3__color1"></div>
