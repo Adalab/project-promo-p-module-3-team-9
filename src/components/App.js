@@ -28,7 +28,6 @@ function App() {
 
   const handleCollapsed = (ev) => {
     const targetId = ev.currentTarget.id;
-    console.log(targetId);
     if (targetId === 'design') {
       designClassCollapsed === 'collapsed'
         ? setDesignClassCollapsed('')
