@@ -2,6 +2,8 @@ import '../styles/App.scss';
 import logoAdalab from '../images/logo-adalab.png';
 import logoFontAwesome from '../images/tarjetas-molonas.png';
 import { useState } from 'react';
+import dataApi from '../services/api';
+import CardPreview from './CardPreview';
 
 function App() {
   //constantes de estado
@@ -18,6 +20,7 @@ function App() {
     linkedin: '',
     github: '',
   });
+  const [dataApi, setDataApi] = useState('');
 
   //funciones manejadoras
   const handleInput = (event) => {
@@ -56,6 +59,14 @@ function App() {
     });
   };
 
+  //aquí hacer la llamada a la api para enviar los datos
+  const handleClickCreateCard = (ev) => {
+    ev.preventDefault();
+    dataApi(dataCard).then((response) => {
+      setDataApi(response);
+    });
+  };
+
   return (
     <div>
       <header className="header">
@@ -67,51 +78,7 @@ function App() {
       </header>
 
       <main className="main">
-        <section
-          className={`main1 js-preview-container palette-${dataCard.palette}`}
-        >
-          <div className="main1__container">
-            <div>
-              <button
-                className="main1__container__reset js_buttonReset"
-                onClick={handleReset}
-              >
-                <i className="fa-solid fa-trash-can"></i>reset
-              </button>
-
-              <div className="main1__container__text">
-                <div className="border">
-                  <p className="main1__container__text--name js-preview-name">
-                    {dataCard.name || 'Nombre Completo'}
-                  </p>
-                  <p className="main1__container__text--profession js-preview-job">
-                    {dataCard.job || 'Front-end developer'}
-                  </p>
-                </div>
-              </div>
-
-              <div className="main1__container__cat js__profile-image js_reset_image"></div>
-
-              <nav className="main1__container__rrss">
-                <a className="js-preview-phone" href={`tel: ${dataCard.phone}`}>
-                  <i className="main1__container__rrss__link fa-solid fa-mobile-screen-button"></i>
-                </a>
-                <a
-                  className="js-preview-email"
-                  href={`mailto: ${dataCard.email}`}
-                >
-                  <i className="main1__container__rrss__link fa-solid fa-envelope"></i>
-                </a>
-                <a className="js-preview-linkedin" href={dataCard.linkedin}>
-                  <i className="main1__container__rrss__link fa-brands fa-linkedin-in"></i>
-                </a>
-                <a className="js-preview-github" href={dataCard.github}>
-                  <i className="main1__container__rrss__link fa-brands fa-github-alt"></i>
-                </a>
-              </nav>
-            </div>
-          </div>
-        </section>
+        <CardPreview data={dataCard} />
 
         <form action="/signup" method="post" className="main2">
           <fieldset className="design">
@@ -296,7 +263,10 @@ function App() {
             <div className="form3 js-share">
               <div className={`form3--section-1 ${shareClassCollapsed}`}>
                 <p className="text-share share-error js-text-share"></p>
-                <button className="form3--section-1__button js_bntCreate">
+                <button
+                  className="form3--section-1__button js_bntCreate"
+                  onClick={handleClickCreateCard}
+                >
                   <i className="fa-regular fa-address-card"></i>
                   <p className="button-create">CREAR TARJETA</p>
                 </button>
