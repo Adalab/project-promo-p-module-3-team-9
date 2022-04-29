@@ -1,10 +1,14 @@
 const Share = (props) => {
+  const handleShareCollapsed = (ev) => {
+    const targetId = ev.currentTarget.id;
+    props.handleCollapsed(targetId);
+  };
   return (
     <fieldset action="/signup" method="post" className="share-container">
       <label
         id="share"
         className="form--heading js-title_share"
-        onClick={props.handleCollapsed}
+        onClick={handleShareCollapsed}
       >
         <div className="form--heading__left">
           <i className="fa-solid fa-share-nodes"></i>

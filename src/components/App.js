@@ -1,24 +1,24 @@
-import '../styles/App.scss';
-import { useState } from 'react';
-import dataApi from '../services/api';
-import Create from './Create';
+import "../styles/App.scss";
+import { useState } from "react";
+import dataApi from "../services/api";
+import Create from "./Create";
 
 function App() {
   //constantes de estado
-  const [designClassCollapsed, setDesignClassCollapsed] = useState('collapsed');
-  const [fillClassCollapsed, setFillClassCollapsed] = useState('collapsed');
-  const [shareClassCollapsed, setShareClassCollapsed] = useState('collapsed');
+  const [designClassCollapsed, setDesignClassCollapsed] = useState("collapsed");
+  const [fillClassCollapsed, setFillClassCollapsed] = useState("collapsed");
+  const [shareClassCollapsed, setShareClassCollapsed] = useState("collapsed");
   const [dataCard, setDataCard] = useState({
-    palette: '1',
-    name: '',
-    job: '',
-    email: '',
-    phone: '',
-    photo: '',
-    linkedin: '',
-    github: '',
+    palette: "1",
+    name: "",
+    job: "",
+    email: "",
+    phone: "",
+    photo: "",
+    linkedin: "",
+    github: "",
   });
-  const [dataApi, setDataApi] = useState('');
+  const [dataApi, setDataApi] = useState("");
 
   //funciones manejadoras
   const handleInput = (event) => {
@@ -27,32 +27,31 @@ function App() {
     setDataCard({ ...dataCard, [inputChanged]: inputValue });
   };
 
-  const handleCollapsed = (ev) => {
-    const targetId = ev.currentTarget.id;
-    if (targetId === 'design') {
-      designClassCollapsed === 'collapsed'
-        ? setDesignClassCollapsed('')
-        : setDesignClassCollapsed('collapsed');
-    } else if (targetId === 'fill') {
-      fillClassCollapsed === 'collapsed'
-        ? setFillClassCollapsed('')
-        : setFillClassCollapsed('collapsed');
-    } else if (targetId === 'share') {
-      shareClassCollapsed === 'collapsed'
-        ? setShareClassCollapsed('')
-        : setShareClassCollapsed('collapsed');
+  const handleCollapsed = (targetId) => {
+    if (targetId === "design") {
+      designClassCollapsed === "collapsed"
+        ? setDesignClassCollapsed("")
+        : setDesignClassCollapsed("collapsed");
+    } else if (targetId === "fill") {
+      fillClassCollapsed === "collapsed"
+        ? setFillClassCollapsed("")
+        : setFillClassCollapsed("collapsed");
+    } else if (targetId === "share") {
+      shareClassCollapsed === "collapsed"
+        ? setShareClassCollapsed("")
+        : setShareClassCollapsed("collapsed");
     }
   };
 
   const handleReset = () => {
     setDataCard({
-      palette: '1',
-      name: '',
-      job: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
+      palette: "1",
+      name: "",
+      job: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: "",
     });
   };
 

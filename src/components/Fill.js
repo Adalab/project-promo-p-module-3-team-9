@@ -1,10 +1,14 @@
 const Fill = (props) => {
+  const handleFillCollapsed = (ev) => {
+    const targetId = ev.currentTarget.id;
+    props.handleCollapsed(targetId);
+  };
   return (
     <>
       <div
         id="fill"
         className="filled js-desplegable"
-        onClick={props.handleCollapsed}
+        onClick={handleFillCollapsed}
       >
         <i className="fa-solid fa-keyboard"></i>
         <legend className="filled__text">Rellena</legend>

@@ -1,9 +1,9 @@
-import Header from './Header';
-import Footer from './Footer';
-import CardPreview from './CardPreview';
-import Design from './Design';
-import Fill from './Fill';
-import Share from './Share';
+import Header from "./Header";
+import Footer from "./Footer";
+import CardPreview from "./CardPreview";
+import Design from "./Design";
+import Fill from "./Fill";
+import Share from "./Share";
 
 const Create = (props) => {
   return (
@@ -28,7 +28,7 @@ const Create = (props) => {
 
           <Fill
             dataCard={props.dataCard}
-            designClassCollapsed={props.designClassCollapsed}
+            fillClassCollapsed={props.fillClassCollapsed}
             handleInput={props.handleInput}
             handleCollapsed={props.handleCollapsed}
           />
@@ -36,7 +36,7 @@ const Create = (props) => {
           <div className="line"></div>
           <Share
             dataCard={props.dataCard}
-            designClassCollapsed={props.designClassCollapsed}
+            shareClassCollapsed={props.shareClassCollapsed}
             handleInput={props.handleInput}
             handleCollapsed={props.handleCollapsed}
           />
