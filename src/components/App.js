@@ -1,24 +1,29 @@
-import "../styles/App.scss";
-import { useState } from "react";
-import dataApi from "../services/api";
-import Create from "./Create";
+import '../styles/App.scss';
+import { useState } from 'react';
+import dataApi from '../services/api';
+import Create from './Create';
 
 function App() {
   //constantes de estado
-  const [designClassCollapsed, setDesignClassCollapsed] = useState("collapsed");
-  const [fillClassCollapsed, setFillClassCollapsed] = useState("collapsed");
-  const [shareClassCollapsed, setShareClassCollapsed] = useState("collapsed");
+  const [designClass, setDesignClass] = useState('collapsed');
+  const [fillClass, setFillClass] = useState('collapsed');
+  const [shareClass, setShareClass] = useState('collapsed');
+
+  const [designArrow, setDesignArrow] = useState('fa-transform');
+  const [fillArrow, setFillArrow] = useState('fa-transform');
+  const [shareArrow, setShareArrow] = useState('fa-transform');
+
   const [dataCard, setDataCard] = useState({
-    palette: "1",
-    name: "",
-    job: "",
-    email: "",
-    phone: "",
-    photo: "",
-    linkedin: "",
-    github: "",
+    palette: '1',
+    name: '',
+    job: '',
+    email: '',
+    phone: '',
+    photo: '',
+    linkedin: '',
+    github: '',
   });
-  const [dataApi, setDataApi] = useState("");
+  const [dataApi, setDataApi] = useState('');
 
   //funciones manejadoras
   const handleInput = (event) => {
@@ -28,30 +33,54 @@ function App() {
   };
 
   const handleCollapsed = (targetId) => {
-    if (targetId === "design") {
-      designClassCollapsed === "collapsed"
-        ? setDesignClassCollapsed("")
-        : setDesignClassCollapsed("collapsed");
-    } else if (targetId === "fill") {
-      fillClassCollapsed === "collapsed"
-        ? setFillClassCollapsed("")
-        : setFillClassCollapsed("collapsed");
-    } else if (targetId === "share") {
-      shareClassCollapsed === "collapsed"
-        ? setShareClassCollapsed("")
-        : setShareClassCollapsed("collapsed");
+    if (targetId === 'design') {
+      if (designClass === 'collapsed') {
+        setFillClass('collapsed');
+        setShareClass('collapsed');
+        setFillArrow('fa-transform');
+        setShareArrow('fa-transform');
+        setDesignClass('');
+        setDesignArrow('');
+      } else {
+        setDesignClass('collapsed');
+        setDesignArrow('fa-transform');
+      }
+    } else if (targetId === 'fill') {
+      if (fillClass === 'collapsed') {
+        setDesignClass('collapsed');
+        setShareClass('collapsed');
+        setDesignArrow('fa-transform');
+        setShareArrow('fa-transform');
+        setFillClass('');
+        setFillArrow('');
+      } else {
+        setFillClass('collapsed');
+        setFillArrow('fa-transform');
+      }
+    } else if (targetId === 'share') {
+      if (shareClass === 'collapsed') {
+        setDesignClass('collapsed');
+        setFillClass('collapsed');
+        setFillArrow('fa-transform');
+        setDesignArrow('fa-transform');
+        setShareClass('');
+        setShareArrow('');
+      } else {
+        setShareClass('collapsed');
+        setShareArrow('fa-transform');
+      }
     }
   };
 
   const handleReset = () => {
     setDataCard({
-      palette: "1",
-      name: "",
-      job: "",
-      email: "",
-      phone: "",
-      linkedin: "",
-      github: "",
+      palette: '1',
+      name: '',
+      job: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
     });
   };
 
@@ -67,9 +96,12 @@ function App() {
     <div>
       <Create
         dataCard={dataCard}
-        designClassCollapsed={designClassCollapsed}
-        fillClassCollapsed={fillClassCollapsed}
-        shareClassCollapsed={shareClassCollapsed}
+        designClass={designClass}
+        fillClass={fillClass}
+        shareClass={shareClass}
+        designArrow={designArrow}
+        fillArrow={fillArrow}
+        shareArrow={shareArrow}
         handleInput={handleInput}
         handleCollapsed={handleCollapsed}
         handleClickCreateCard={handleClickCreateCard}

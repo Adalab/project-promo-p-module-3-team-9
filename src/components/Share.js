@@ -14,10 +14,12 @@ const Share = (props) => {
           <i className="fa-solid fa-share-nodes"></i>
           <h2 className="share--text">COMPARTE</h2>
         </div>
-        <i className="fa-solid fa-angle-up fill-arrow js-shareArrow fa-transform"></i>
+        <i
+          className={`fa-solid fa-angle-up fill-arrow js-shareArrow ${props.shareArrow}`}
+        ></i>
       </label>
       <div className="form3 js-share">
-        <div className={`form3--section-1 ${props.shareClassCollapsed}`}>
+        <div className={`form3--section-1 ${props.shareClass}`}>
           <p className="text-share share-error js-text-share"></p>
           <button
             className="form3--section-1__button js_bntCreate"

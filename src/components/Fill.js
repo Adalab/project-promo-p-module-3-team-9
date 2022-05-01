@@ -12,12 +12,14 @@ const Fill = (props) => {
       >
         <i className="fa-solid fa-keyboard"></i>
         <legend className="filled__text">Rellena</legend>
-        <i className="fa-solid fa-angle-up fill-arrow js-icon-rellena fa-transform "></i>
+        <i
+          className={`fa-solid fa-angle-up fill-arrow js-icon-rellena ${props.fillArrow}`}
+        ></i>
       </div>
       <fieldset
         action="/signup"
         method="post"
-        className={`form2 js-fieldset ${props.fillClassCollapsed}`}
+        className={`form2 js-fieldset ${props.fillClass}`}
       >
         <label className="label1">Nombre completo</label>
         <input

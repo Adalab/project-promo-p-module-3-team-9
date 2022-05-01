@@ -14,10 +14,12 @@ const Design = (props) => {
           <i className="fa-solid fa-object-ungroup design__legend--icon"></i>
           <h2 className="design__title">Diseña</h2>
         </div>
-        <i className="fa-solid fa-angle-up design__legend--arrow js-designArrow fa-transform"></i>
+        <i
+          className={`fa-solid fa-angle-up design__legend--arrow js-designArrow ${props.designArrow}`}
+        ></i>
       </legend>
       <div className="js-design">
-        <div className={`box1 ${props.designClassCollapsed}`}>
+        <div className={`box1 ${props.designClass}`}>
           <h3 className="design__inputname">Colores</h3>
           <div className="design__options">
             <div className="option">
@@ -28,7 +30,7 @@ const Design = (props) => {
                 value="1"
                 name="palette"
                 onChange={props.handleInput}
-                checked={props.dataCard.palette === "1"}
+                checked={props.dataCard.palette === '1'}
               />
               <label className="design__options--box" htmlFor="option1">
                 <div className="option1__color1"></div>
@@ -44,7 +46,7 @@ const Design = (props) => {
                 value="2"
                 name="palette"
                 onChange={props.handleInput}
-                checked={props.dataCard.palette === "2"}
+                checked={props.dataCard.palette === '2'}
               />
               <label className="design__options--box" htmlFor="option2">
                 <div className="option2__color1"></div>
@@ -60,7 +62,7 @@ const Design = (props) => {
                 value="3"
                 name="palette"
                 onChange={props.handleInput}
-                checked={props.dataCard.palette === "3"}
+                checked={props.dataCard.palette === '3'}
               />
               <label className="design__options--box" htmlFor="option3">
                 <div className="option3__color1"></div>

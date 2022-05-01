@@ -1,9 +1,9 @@
-import Header from "./Header";
-import Footer from "./Footer";
-import CardPreview from "./CardPreview";
-import Design from "./Design";
-import Fill from "./Fill";
-import Share from "./Share";
+import Header from './Header';
+import Footer from './Footer';
+import CardPreview from './CardPreview';
+import Design from './Design';
+import Fill from './Fill';
+import Share from './Share';
 
 const Create = (props) => {
   return (
@@ -19,7 +19,8 @@ const Create = (props) => {
         <form action="/signup" method="post" className="main2">
           <Design
             dataCard={props.dataCard}
-            designClassCollapsed={props.designClassCollapsed}
+            designClass={props.designClass}
+            designArrow={props.designArrow}
             handleInput={props.handleInput}
             handleCollapsed={props.handleCollapsed}
           />
@@ -28,7 +29,8 @@ const Create = (props) => {
 
           <Fill
             dataCard={props.dataCard}
-            fillClassCollapsed={props.fillClassCollapsed}
+            fillClass={props.fillClass}
+            fillArrow={props.fillArrow}
             handleInput={props.handleInput}
             handleCollapsed={props.handleCollapsed}
           />
@@ -36,7 +38,8 @@ const Create = (props) => {
           <div className="line"></div>
           <Share
             dataCard={props.dataCard}
-            shareClassCollapsed={props.shareClassCollapsed}
+            shareClass={props.shareClass}
+            shareArrow={props.shareArrow}
             handleInput={props.handleInput}
             handleCollapsed={props.handleCollapsed}
           />
