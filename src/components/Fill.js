@@ -102,7 +102,7 @@ const Fill = (props) => {
           className="input js_resetInput"
           name="github"
           placeholder="Ej: sally-hill"
-          onChange={props.handleInput}
+          onChange={handleFillInput}
           value={props.dataCard.github}
           required
         />
