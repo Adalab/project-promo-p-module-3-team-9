@@ -19,7 +19,8 @@ function App() {
     job: '',
     email: '',
     phone: '',
-    photo: '',
+    photo:
+      'https://www.milenio.com/uploads/media/2021/02/21/nina-simone-a-anos-de.jpg',
     linkedin: '',
     github: '',
   });
