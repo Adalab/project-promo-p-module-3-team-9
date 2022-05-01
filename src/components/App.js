@@ -26,9 +26,7 @@ function App() {
   const [dataApi, setDataApi] = useState('');
 
   //funciones manejadoras
-  const handleInput = (event) => {
-    const inputValue = event.target.value;
-    const inputChanged = event.target.name;
+  const handleInput = (inputValue, inputChanged) => {
     setDataCard({ ...dataCard, [inputChanged]: inputValue });
   };
 

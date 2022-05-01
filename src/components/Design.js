@@ -3,6 +3,12 @@ const Design = (props) => {
     const targetId = ev.currentTarget.id;
     props.handleCollapsed(targetId);
   };
+
+  const handleDesignInput = (ev) => {
+    const inputValue = ev.target.id;
+    const inputChanged = ev.target.name;
+    props.handleInput(inputValue, inputChanged);
+  };
   return (
     <fieldset className="design">
       <legend
@@ -27,9 +33,9 @@ const Design = (props) => {
                 className="option__input js-input-1 js-option-input"
                 id="1"
                 type="radio"
-                value="1"
+                value={props.dataCard.palette}
                 name="palette"
-                onChange={props.handleInput}
+                onChange={handleDesignInput}
                 checked={props.dataCard.palette === '1'}
               />
               <label className="design__options--box" htmlFor="option1">
@@ -43,9 +49,9 @@ const Design = (props) => {
                 className="option__input js-input-2 js-option-input"
                 id="2"
                 type="radio"
-                value="2"
+                value={props.dataCard.palette}
                 name="palette"
-                onChange={props.handleInput}
+                onChange={handleDesignInput}
                 checked={props.dataCard.palette === '2'}
               />
               <label className="design__options--box" htmlFor="option2">
@@ -59,9 +65,9 @@ const Design = (props) => {
                 className="option__input js-input-3 js-option-input"
                 id="3"
                 type="radio"
-                value="3"
+                value={props.dataCard.palette}
                 name="palette"
-                onChange={props.handleInput}
+                onChange={handleDesignInput}
                 checked={props.dataCard.palette === '3'}
               />
               <label className="design__options--box" htmlFor="option3">

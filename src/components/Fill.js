@@ -3,6 +3,12 @@ const Fill = (props) => {
     const targetId = ev.currentTarget.id;
     props.handleCollapsed(targetId);
   };
+
+  const handleFillInput = (ev) => {
+    const inputValue = ev.target.value;
+    const inputChanged = ev.target.name;
+    props.handleInput(inputValue, inputChanged);
+  };
   return (
     <>
       <div
@@ -27,7 +33,7 @@ const Fill = (props) => {
           className="input js_resetInput"
           name="name"
           placeholder="Ej: Sally Hill"
-          onChange={props.handleInput}
+          onChange={handleFillInput}
           value={props.dataCard.name}
           required
         />
@@ -37,7 +43,7 @@ const Fill = (props) => {
           className="input js_resetInput"
           name="job"
           placeholder="Ej: Front-end unicorn"
-          onChange={props.handleInput}
+          onChange={handleFillInput}
           value={props.dataCard.job}
           required
         />
@@ -65,7 +71,7 @@ const Fill = (props) => {
           className="input js_resetInput"
           name="email"
           placeholder="Ej: sally.hill@gmail.com"
-          onChange={props.handleInput}
+          onChange={handleFillInput}
           value={props.dataCard.email}
           required
         />
@@ -76,7 +82,7 @@ const Fill = (props) => {
           className="input js_resetInput"
           name="phone"
           placeholder="Ej: 555-55-55-55"
-          onChange={props.handleInput}
+          onChange={handleFillInput}
           value={props.dataCard.phone}
           required
         />
@@ -86,7 +92,7 @@ const Fill = (props) => {
           className="input js_resetInput"
           name="linkedin"
           placeholder="Ej: /sally-hill-9b3888143/"
-          onChange={props.handleInput}
+          onChange={handleFillInput}
           value={props.dataCard.linkedin}
           required
         />
