@@ -1,29 +1,31 @@
-import '../styles/App.scss';
-import { useState } from 'react';
-import dataApi from '../services/api';
-import Create from './Create';
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import dataApi from "../services/api";
+import "../styles/App.scss";
+import Create from "./Create";
+import Landing from "./Landing";
 
 function App() {
   //constantes de estado
-  const [designClass, setDesignClass] = useState('collapsed');
-  const [fillClass, setFillClass] = useState('collapsed');
-  const [shareClass, setShareClass] = useState('collapsed');
+  const [designClass, setDesignClass] = useState("collapsed");
+  const [fillClass, setFillClass] = useState("collapsed");
+  const [shareClass, setShareClass] = useState("collapsed");
 
-  const [designArrow, setDesignArrow] = useState('fa-transform');
-  const [fillArrow, setFillArrow] = useState('fa-transform');
-  const [shareArrow, setShareArrow] = useState('fa-transform');
+  const [designArrow, setDesignArrow] = useState("fa-transform");
+  const [fillArrow, setFillArrow] = useState("fa-transform");
+  const [shareArrow, setShareArrow] = useState("fa-transform");
 
   const [dataCard, setDataCard] = useState({
-    palette: '1',
-    name: '',
-    job: '',
-    email: '',
-    phone: '',
-    photo: '',
-    linkedin: '',
-    github: '',
+    palette: "1",
+    name: "",
+    job: "",
+    email: "",
+    phone: "",
+    photo: "",
+    linkedin: "",
+    github: "",
   });
-  const [dataApi, setDataApi] = useState('');
+  const [dataApi, setDataApi] = useState("");
 
   //funciones manejadoras
   const handleInput = (inputValue, inputChanged) => {
@@ -31,54 +33,54 @@ function App() {
   };
 
   const handleCollapsed = (targetId) => {
-    if (targetId === 'design') {
-      if (designClass === 'collapsed') {
-        setFillClass('collapsed');
-        setShareClass('collapsed');
-        setFillArrow('fa-transform');
-        setShareArrow('fa-transform');
-        setDesignClass('');
-        setDesignArrow('');
+    if (targetId === "design") {
+      if (designClass === "collapsed") {
+        setFillClass("collapsed");
+        setShareClass("collapsed");
+        setFillArrow("fa-transform");
+        setShareArrow("fa-transform");
+        setDesignClass("");
+        setDesignArrow("");
       } else {
-        setDesignClass('collapsed');
-        setDesignArrow('fa-transform');
+        setDesignClass("collapsed");
+        setDesignArrow("fa-transform");
       }
-    } else if (targetId === 'fill') {
-      if (fillClass === 'collapsed') {
-        setDesignClass('collapsed');
-        setShareClass('collapsed');
-        setDesignArrow('fa-transform');
-        setShareArrow('fa-transform');
-        setFillClass('');
-        setFillArrow('');
+    } else if (targetId === "fill") {
+      if (fillClass === "collapsed") {
+        setDesignClass("collapsed");
+        setShareClass("collapsed");
+        setDesignArrow("fa-transform");
+        setShareArrow("fa-transform");
+        setFillClass("");
+        setFillArrow("");
       } else {
-        setFillClass('collapsed');
-        setFillArrow('fa-transform');
+        setFillClass("collapsed");
+        setFillArrow("fa-transform");
       }
-    } else if (targetId === 'share') {
-      if (shareClass === 'collapsed') {
-        setDesignClass('collapsed');
-        setFillClass('collapsed');
-        setFillArrow('fa-transform');
-        setDesignArrow('fa-transform');
-        setShareClass('');
-        setShareArrow('');
+    } else if (targetId === "share") {
+      if (shareClass === "collapsed") {
+        setDesignClass("collapsed");
+        setFillClass("collapsed");
+        setFillArrow("fa-transform");
+        setDesignArrow("fa-transform");
+        setShareClass("");
+        setShareArrow("");
       } else {
-        setShareClass('collapsed');
-        setShareArrow('fa-transform');
+        setShareClass("collapsed");
+        setShareArrow("fa-transform");
       }
     }
   };
 
   const handleReset = () => {
     setDataCard({
-      palette: '1',
-      name: '',
-      job: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
+      palette: "1",
+      name: "",
+      job: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: "",
     });
   };
 
@@ -92,19 +94,27 @@ function App() {
 
   return (
     <div>
-      <Create
-        dataCard={dataCard}
-        designClass={designClass}
-        fillClass={fillClass}
-        shareClass={shareClass}
-        designArrow={designArrow}
-        fillArrow={fillArrow}
-        shareArrow={shareArrow}
-        handleInput={handleInput}
-        handleCollapsed={handleCollapsed}
-        handleClickCreateCard={handleClickCreateCard}
-        handleReset={handleReset}
-      />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route
+          path="/create"
+          element={
+            <Create
+              dataCard={dataCard}
+              designClass={designClass}
+              fillClass={fillClass}
+              shareClass={shareClass}
+              designArrow={designArrow}
+              fillArrow={fillArrow}
+              shareArrow={shareArrow}
+              handleInput={handleInput}
+              handleCollapsed={handleCollapsed}
+              handleClickCreateCard={handleClickCreateCard}
+              handleReset={handleReset}
+            />
+          }
+        />
+      </Routes>
     </div>
   );
 }
