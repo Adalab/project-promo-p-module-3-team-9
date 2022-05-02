@@ -14,6 +14,7 @@ const Create = (props) => {
         <CardPreview
           dataCard={props.dataCard}
           handleReset={props.handleReset}
+          avatar={props.avatar}
         />
 
         <form action="/signup" method="post" className="main2">
@@ -33,6 +34,7 @@ const Create = (props) => {
             fillArrow={props.fillArrow}
             handleInput={props.handleInput}
             handleCollapsed={props.handleCollapsed}
+            updateAvatar={props.updateAvatar}
           />
 
           <div className="line"></div>

@@ -1,3 +1,4 @@
+import Profile from './Profile';
 const CardPreview = (props) => {
   const handleClickReset = (ev) => {
     ev.preventDefault();
@@ -27,7 +28,8 @@ const CardPreview = (props) => {
             </div>
           </div>
 
-          <div className="main1__container__cat js__profile-image js_reset_image"></div>
+          {/* <div className="main1__container__cat js__profile-image js_reset_image"></div> */}
+          <Profile avatar={props.avatar} />
 
           <nav className="main1__container__rrss">
             <a

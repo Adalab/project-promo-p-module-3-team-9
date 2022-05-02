@@ -1,3 +1,4 @@
+import GetAvatar from './GetAvatar';
 const Fill = (props) => {
   const handleFillCollapsed = (ev) => {
     const targetId = ev.currentTarget.id;
@@ -50,20 +51,7 @@ const Fill = (props) => {
 
         <label className="label">Imagen de perfil</label>
 
-        <div className="container">
-          <label
-            className="form2-submit js__profile-trigger"
-            htmlFor="user-photo"
-          >
-            Añadir imagen
-          </label>
-          <input
-            type="file"
-            className="input-file js__profile-upload-btn"
-            id="user-photo"
-          />
-          <span className="div 	js__profile-preview js_reset_previewimg"></span>
-        </div>
+        <GetAvatar avatar={props.avatar} updateAvatar={props.updateAvatar} />
 
         <label className="label">Email</label>
         <input

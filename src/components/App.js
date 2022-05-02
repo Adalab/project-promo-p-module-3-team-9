@@ -18,20 +18,25 @@ function App() {
   const [shareUrl, setShareUrl] = useState('js-createHidden');
   const [shareError, setShareError] = useState('js-createHidden');
 
+  const [avatar, setAvatar] = useState('');
+
   const [dataCard, setDataCard] = useState({
     palette: '1',
     name: '',
     job: '',
     email: '',
     phone: '',
-    photo:
-      'https://www.milenio.com/uploads/media/2021/02/21/nina-simone-a-anos-de.jpg',
+    photo: '',
     linkedin: '',
     github: '',
   });
   const [dataFromApi, setDataFromApi] = useState({});
 
   //funciones manejadoras
+  const updateAvatar = (avatar) => {
+    setAvatar(avatar);
+  };
+
   const handleInput = (inputValue, inputChanged) => {
     setDataCard({ ...dataCard, [inputChanged]: inputValue });
   };
@@ -124,6 +129,8 @@ function App() {
               handleCollapsed={handleCollapsed}
               handleClickCreateCard={handleClickCreateCard}
               handleReset={handleReset}
+              updateAvatar={updateAvatar}
+              avatar={avatar}
               dataFromApi={dataFromApi}
             />
           }
