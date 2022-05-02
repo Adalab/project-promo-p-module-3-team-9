@@ -1,9 +1,9 @@
-import Header from './Header';
-import Footer from './Footer';
-import CardPreview from './CardPreview';
-import Design from './Design';
-import Fill from './Fill';
-import Share from './Share';
+import Header from "./Header";
+import Footer from "./Footer";
+import CardPreview from "./CardPreview";
+import Design from "./Design";
+import Fill from "./Fill";
+import Share from "./Share";
 
 const Create = (props) => {
   return (
@@ -42,6 +42,10 @@ const Create = (props) => {
             shareArrow={props.shareArrow}
             handleInput={props.handleInput}
             handleCollapsed={props.handleCollapsed}
+            handleClickCreateCard={props.handleClickCreateCard}
+            dataFromApi={props.dataFromApi}
+            shareUrl={props.shareUrl}
+            shareError={props.shareError}
           />
         </form>
       </main>

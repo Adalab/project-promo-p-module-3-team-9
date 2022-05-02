@@ -1,7 +1,9 @@
-import '../styles/App.scss';
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import dataApi from '../services/api';
+import '../styles/App.scss';
 import Create from './Create';
+import Landing from './Landing';
 
 function App() {
   //constantes de estado
@@ -12,6 +14,9 @@ function App() {
   const [designArrow, setDesignArrow] = useState('fa-transform');
   const [fillArrow, setFillArrow] = useState('fa-transform');
   const [shareArrow, setShareArrow] = useState('fa-transform');
+
+  const [shareUrl, setShareUrl] = useState('js-createHidden');
+  const [shareError, setShareError] = useState('js-createHidden');
 
   const [dataCard, setDataCard] = useState({
     palette: '1',
@@ -24,7 +29,7 @@ function App() {
     linkedin: '',
     github: '',
   });
-  const [dataApi, setDataApi] = useState('');
+  const [dataFromApi, setDataFromApi] = useState({});
 
   //funciones manejadoras
   const handleInput = (inputValue, inputChanged) => {
@@ -84,28 +89,46 @@ function App() {
   };
 
   //aquí hacer la llamada a la api para enviar los datos
-  const handleClickCreateCard = (ev) => {
-    ev.preventDefault();
+  const handleClickCreateCard = () => {
     dataApi(dataCard).then((response) => {
-      setDataApi(response);
+      console.log(response);
+      setDataFromApi(response);
+      if (response.success) {
+        setShareUrl('');
+        setShareError('js-createHidden');
+      } else {
+        setShareError('');
+        setShareUrl('js-createHidden');
+      }
     });
   };
 
   return (
     <div>
-      <Create
-        dataCard={dataCard}
-        designClass={designClass}
-        fillClass={fillClass}
-        shareClass={shareClass}
-        designArrow={designArrow}
-        fillArrow={fillArrow}
-        shareArrow={shareArrow}
-        handleInput={handleInput}
-        handleCollapsed={handleCollapsed}
-        handleClickCreateCard={handleClickCreateCard}
-        handleReset={handleReset}
-      />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route
+          path="/create"
+          element={
+            <Create
+              dataCard={dataCard}
+              designClass={designClass}
+              fillClass={fillClass}
+              shareClass={shareClass}
+              shareUrl={shareUrl}
+              shareError={shareError}
+              designArrow={designArrow}
+              fillArrow={fillArrow}
+              shareArrow={shareArrow}
+              handleInput={handleInput}
+              handleCollapsed={handleCollapsed}
+              handleClickCreateCard={handleClickCreateCard}
+              handleReset={handleReset}
+              dataFromApi={dataFromApi}
+            />
+          }
+        />
+      </Routes>
     </div>
   );
 }
