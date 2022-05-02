@@ -44,7 +44,8 @@ const Create = (props) => {
             handleCollapsed={props.handleCollapsed}
             handleClickCreateCard={props.handleClickCreateCard}
             dataFromApi={props.dataFromApi}
-            shareDivClass={props.shareDivClass}
+            shareUrl={props.shareUrl}
+            shareError={props.shareError}
           />
         </form>
       </main>

@@ -24,7 +24,11 @@ const Share = (props) => {
       </label>
       <div className={`form3 js-share ${props.shareClass}`}>
         <div className="form3--section-1">
-          <p className="text-share share-error js-text-share"></p>
+          <p
+            className={`text-share share-error js-text-share ${props.shareError}`}
+          >
+            Por favor, cumplimente todos los datos del formulario
+          </p>
           <button
             className="form3--section-1__button js_bntCreate"
             onClick={handleClickCreateCard}
@@ -34,9 +38,7 @@ const Share = (props) => {
           </button>
         </div>
 
-        <div
-          className={`form3--section-2  js-shareCard ${props.shareDivClass}`}
-        >
+        <div className={`form3--section-2  js-shareCard ${props.shareUrl}`}>
           <div className="form3--section-2__text">
             <p className="text-share">La tarjeta ha sido creada</p>
             <a className="url-share js_shareUrl" href="" target="_blank">

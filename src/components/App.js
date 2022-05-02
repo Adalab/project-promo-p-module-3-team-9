@@ -15,7 +15,8 @@ function App() {
   const [fillArrow, setFillArrow] = useState("fa-transform");
   const [shareArrow, setShareArrow] = useState("fa-transform");
 
-  const [shareDivClass, setShareDivClass] = useState("js-createHidden");
+  const [shareUrl, setShareUrl] = useState("js-createHidden");
+  const [shareError, setShareError] = useState("js-createHidden");
 
   const [dataCard, setDataCard] = useState({
     palette: "1",
@@ -92,9 +93,13 @@ function App() {
     dataApi(dataCard).then((response) => {
       console.log(response);
       setDataFromApi(response);
-      dataFromApi.success
-        ? setShareDivClass("")
-        : setShareDivClass("js-createHidden");
+      if (dataFromApi.success) {
+        setShareUrl("");
+        setShareError("js-createHidden");
+      } else {
+        setShareError("");
+        setShareUrl("js-createHidden");
+      }
     });
   };
 
@@ -110,7 +115,8 @@ function App() {
               designClass={designClass}
               fillClass={fillClass}
               shareClass={shareClass}
-              shareDivClass={shareDivClass}
+              shareUrl={shareUrl}
+              shareError={shareError}
               designArrow={designArrow}
               fillArrow={fillArrow}
               shareArrow={shareArrow}
