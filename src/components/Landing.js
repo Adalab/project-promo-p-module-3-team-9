@@ -1,41 +1,41 @@
-import landingImage from "../images/tarjetas-molonas.png";
-import Footer from "./Footer";
-import { Link } from "react-router-dom";
+import landingImage from '../images/tarjetas-molonas.png';
+import Footer from './Footer';
+import { Link } from 'react-router-dom';
 
 const Landing = () => {
   return (
     <>
-      <section class="landing">
-        <div class="landing__logo">
-          <img class="landing__image" src={landingImage} alt="" />
+      <section className="landing">
+        <div className="landing__logo">
+          <img className="landing__image" src={landingImage} alt="" />
         </div>
 
-        <div class="landing__content">
-          <h1 class="landing__title">Crea tu tarjeta de visita</h1>
+        <div className="landing__content">
+          <h1 className="landing__title">Crea tu tarjeta de visita</h1>
 
-          <p class="landing__text">
+          <p className="landing__text">
             Crea mejores contactos profesionales de forma fácil y cómoda
           </p>
 
-          <ul class="landing__rectangle">
-            <li class="landing__rectangle--item">
-              <i class="fa fa-object-ungroup"></i>
-              <span class="words">Diseña</span>
+          <ul className="landing__rectangle">
+            <li className="landing__rectangle--item">
+              <i className="fa fa-object-ungroup"></i>
+              <span className="words">Diseña</span>
             </li>
 
-            <li class="landing__rectangle--item">
-              <i class="fa-solid fa-keyboard"></i>
-              <span class="words">Rellena</span>
+            <li className="landing__rectangle--item">
+              <i className="fa-solid fa-keyboard"></i>
+              <span className="words">Rellena</span>
             </li>
 
-            <li class="landing__rectangle--item">
-              <i class="fa fa-share-alt"></i>
-              <span class="words">Comparte</span>
+            <li className="landing__rectangle--item">
+              <i className="fa fa-share-alt"></i>
+              <span className="words">Comparte</span>
             </li>
           </ul>
 
-          <button class="landing__button">
-            <Link class="landing__button--link" to="/create">
+          <button className="landing__button">
+            <Link className="landing__button--link" to="/create">
               Comenzar
             </Link>
           </button>

@@ -1,33 +1,33 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import dataApi from "../services/api";
-import "../styles/App.scss";
-import Create from "./Create";
-import Landing from "./Landing";
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import dataApi from '../services/api';
+import '../styles/App.scss';
+import Create from './Create';
+import Landing from './Landing';
 
 function App() {
   //constantes de estado
-  const [designClass, setDesignClass] = useState("collapsed");
-  const [fillClass, setFillClass] = useState("collapsed");
-  const [shareClass, setShareClass] = useState("collapsed");
+  const [designClass, setDesignClass] = useState('collapsed');
+  const [fillClass, setFillClass] = useState('collapsed');
+  const [shareClass, setShareClass] = useState('collapsed');
 
-  const [designArrow, setDesignArrow] = useState("fa-transform");
-  const [fillArrow, setFillArrow] = useState("fa-transform");
-  const [shareArrow, setShareArrow] = useState("fa-transform");
+  const [designArrow, setDesignArrow] = useState('fa-transform');
+  const [fillArrow, setFillArrow] = useState('fa-transform');
+  const [shareArrow, setShareArrow] = useState('fa-transform');
 
-  const [shareUrl, setShareUrl] = useState("js-createHidden");
-  const [shareError, setShareError] = useState("js-createHidden");
+  const [shareUrl, setShareUrl] = useState('js-createHidden');
+  const [shareError, setShareError] = useState('js-createHidden');
 
   const [dataCard, setDataCard] = useState({
-    palette: "1",
-    name: "",
-    job: "",
-    email: "",
-    phone: "",
+    palette: '1',
+    name: '',
+    job: '',
+    email: '',
+    phone: '',
     photo:
-      "https://www.milenio.com/uploads/media/2021/02/21/nina-simone-a-anos-de.jpg",
-    linkedin: "",
-    github: "",
+      'https://www.milenio.com/uploads/media/2021/02/21/nina-simone-a-anos-de.jpg',
+    linkedin: '',
+    github: '',
   });
   const [dataFromApi, setDataFromApi] = useState({});
 
@@ -37,54 +37,54 @@ function App() {
   };
 
   const handleCollapsed = (targetId) => {
-    if (targetId === "design") {
-      if (designClass === "collapsed") {
-        setFillClass("collapsed");
-        setShareClass("collapsed");
-        setFillArrow("fa-transform");
-        setShareArrow("fa-transform");
-        setDesignClass("");
-        setDesignArrow("");
+    if (targetId === 'design') {
+      if (designClass === 'collapsed') {
+        setFillClass('collapsed');
+        setShareClass('collapsed');
+        setFillArrow('fa-transform');
+        setShareArrow('fa-transform');
+        setDesignClass('');
+        setDesignArrow('');
       } else {
-        setDesignClass("collapsed");
-        setDesignArrow("fa-transform");
+        setDesignClass('collapsed');
+        setDesignArrow('fa-transform');
       }
-    } else if (targetId === "fill") {
-      if (fillClass === "collapsed") {
-        setDesignClass("collapsed");
-        setShareClass("collapsed");
-        setDesignArrow("fa-transform");
-        setShareArrow("fa-transform");
-        setFillClass("");
-        setFillArrow("");
+    } else if (targetId === 'fill') {
+      if (fillClass === 'collapsed') {
+        setDesignClass('collapsed');
+        setShareClass('collapsed');
+        setDesignArrow('fa-transform');
+        setShareArrow('fa-transform');
+        setFillClass('');
+        setFillArrow('');
       } else {
-        setFillClass("collapsed");
-        setFillArrow("fa-transform");
+        setFillClass('collapsed');
+        setFillArrow('fa-transform');
       }
-    } else if (targetId === "share") {
-      if (shareClass === "collapsed") {
-        setDesignClass("collapsed");
-        setFillClass("collapsed");
-        setFillArrow("fa-transform");
-        setDesignArrow("fa-transform");
-        setShareClass("");
-        setShareArrow("");
+    } else if (targetId === 'share') {
+      if (shareClass === 'collapsed') {
+        setDesignClass('collapsed');
+        setFillClass('collapsed');
+        setFillArrow('fa-transform');
+        setDesignArrow('fa-transform');
+        setShareClass('');
+        setShareArrow('');
       } else {
-        setShareClass("collapsed");
-        setShareArrow("fa-transform");
+        setShareClass('collapsed');
+        setShareArrow('fa-transform');
       }
     }
   };
 
   const handleReset = () => {
     setDataCard({
-      palette: "1",
-      name: "",
-      job: "",
-      email: "",
-      phone: "",
-      linkedin: "",
-      github: "",
+      palette: '1',
+      name: '',
+      job: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
     });
   };
 
@@ -93,12 +93,12 @@ function App() {
     dataApi(dataCard).then((response) => {
       console.log(response);
       setDataFromApi(response);
-      if (dataFromApi.success) {
-        setShareUrl("");
-        setShareError("js-createHidden");
+      if (response.success) {
+        setShareUrl('');
+        setShareError('js-createHidden');
       } else {
-        setShareError("");
-        setShareUrl("js-createHidden");
+        setShareError('');
+        setShareUrl('js-createHidden');
       }
     });
   };
