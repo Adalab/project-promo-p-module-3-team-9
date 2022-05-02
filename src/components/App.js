@@ -15,17 +15,20 @@ function App() {
   const [fillArrow, setFillArrow] = useState("fa-transform");
   const [shareArrow, setShareArrow] = useState("fa-transform");
 
+  const [shareDivClass, setShareDivClass] = useState("js-createHidden");
+
   const [dataCard, setDataCard] = useState({
     palette: "1",
     name: "",
     job: "",
     email: "",
     phone: "",
-    photo: "",
+    photo:
+      "https://www.milenio.com/uploads/media/2021/02/21/nina-simone-a-anos-de.jpg",
     linkedin: "",
     github: "",
   });
-  const [dataApi, setDataApi] = useState("");
+  const [dataFromApi, setDataFromApi] = useState({});
 
   //funciones manejadoras
   const handleInput = (inputValue, inputChanged) => {
@@ -85,10 +88,13 @@ function App() {
   };
 
   //aquí hacer la llamada a la api para enviar los datos
-  const handleClickCreateCard = (ev) => {
-    ev.preventDefault();
+  const handleClickCreateCard = () => {
     dataApi(dataCard).then((response) => {
-      setDataApi(response);
+      console.log(response);
+      setDataFromApi(response);
+      dataFromApi.success
+        ? setShareDivClass("")
+        : setShareDivClass("js-createHidden");
     });
   };
 
@@ -104,6 +110,7 @@ function App() {
               designClass={designClass}
               fillClass={fillClass}
               shareClass={shareClass}
+              shareDivClass={shareDivClass}
               designArrow={designArrow}
               fillArrow={fillArrow}
               shareArrow={shareArrow}
@@ -111,6 +118,7 @@ function App() {
               handleCollapsed={handleCollapsed}
               handleClickCreateCard={handleClickCreateCard}
               handleReset={handleReset}
+              dataFromApi={dataFromApi}
             />
           }
         />
