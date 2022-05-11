@@ -41,7 +41,11 @@ const Share = (props) => {
         <div className={`form3--section-2  js-shareCard ${props.shareUrl}`}>
           <div className="form3--section-2__text">
             <p className="text-share">La tarjeta ha sido creada</p>
-            <a className="url-share js_shareUrl" href="" target="_blank">
+            <a
+              className="url-share js_shareUrl"
+              href={props.dataFromApi.cardURL}
+              target="_blank"
+            >
               {props.dataFromApi.cardURL}
             </a>
           </div>

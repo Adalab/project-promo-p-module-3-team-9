@@ -35,6 +35,7 @@ function App() {
   //funciones manejadoras
   const updateAvatar = (avatar) => {
     setAvatar(avatar);
+    setDataCard({ ...dataCard, photo: avatar });
   };
 
   const handleInput = (inputValue, inputChanged) => {
